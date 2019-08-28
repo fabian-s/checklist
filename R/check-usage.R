@@ -21,8 +21,8 @@ check_usage_file <- function(file, env) {
 
   # remove all non-function objects from env so that
   # "unclean" functions using global variables trigger checks
-  constants <-  setdiff(ls.str(envir = env),
-                        lsf.str(envir = env))
+  constants <-  setdiff(utils::ls.str(envir = env),
+                        utils::lsf.str(envir = env))
   do.call(rm, c(constants, envir = env))
 
   #add namespace exports of imported packages to parent of env
@@ -38,7 +38,7 @@ check_usage_file <- function(file, env) {
 # return a named list containing all exported objects of packages
 # imported in <file>
 get_imported_functions <- function(file) {
-  lines <- readLines(file)
+  lines <- suppressWarnings(readLines(file))
   imports <- "(library|require)\\((\"|\')*([[:alnum:]\\.]+)(\"|\')*\\)"
   packages <- lines[grepl(imports, lines)]
   packages <- gsub(imports, "\\3", packages)

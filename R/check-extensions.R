@@ -23,10 +23,11 @@ check_extensions <- function(path) {
   rdata <- c("RData", "Rdata", "rData", "rdata", "Rda", "rda")
   if (sum(rdata %in% uniques) > 1)
     used <- c(used, paste(rdata[rdata %in% uniques], collapse = " & "))
-  if (length(used) == 0) invisible(NULL)
-  message(
-    "Always use the same file extension for the same filetype. You use ",
-    paste0(state$inconsistent_extensions, collapse = ", "), "."
-  )
+  if (length(used) != 0) {
+    message(
+      "Always use the same file extension for the same filetype. You use ",
+      paste0(used, collapse = ", "), "."
+    )
+  }
   invisible(NULL)
 }
