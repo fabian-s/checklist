@@ -1,0 +1,14 @@
+Package: checklist
+Title: Automating OCD Since 2019.
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Fabian",
+           family = "Scheipl",
+           role = c("aut", "cre"),
+           email = "fabian.scheipl@googlemail.com")
+Description: Run a semi-automated checklist for programming homework.
+License: LGPL (>= 2.1)
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 6.1.1
