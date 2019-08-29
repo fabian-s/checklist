@@ -65,11 +65,13 @@ find_fun_defs <- function(parse_data) {
   fun_def_tokens2 <- fun_def_tokens1
   fun_def_tokens2[4] <- "EQ_ASSIGN"
   
-  fun_defs <- which(zoo::rollapply(parse_data[["token"]],
+  # as logical so zero matches don't make <which> tap out.
+  fun_defs <- which(as.logical(
+    zoo::rollapply(parse_data[["token"]],
                                    width = 7,
                                    function(tokens)
                                      all(tokens == fun_def_tokens1) |
-                                     all(tokens == fun_def_tokens2)))
+                                     all(tokens == fun_def_tokens2))))
   parse_data[fun_defs, "line1"]
 }
 
