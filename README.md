@@ -17,6 +17,11 @@ remotes::install_github("fabian-s/checklist")
 
 ## Example
 
+`{checklist}` only has one function, called `checklist`.  
+The input for `checklist` is the path to a folder containing R scripts. 
+`checklist` then runs a lot of different checks for proper formatting and sensible coding style on these. It is fairly likely to produce a lot of false positives, so use your judgment. 
+
+
 ``` r
 library(checklist)
 checklist::checklist(system.file("examples", package = "checklist"))
