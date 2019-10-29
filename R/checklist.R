@@ -13,7 +13,8 @@ checklist <- function(path = ".") {
   try(check_extensions(path))
   message("#---------------------------------------------------------------#")
   message("Running linters:")
-  lints <- try(lint_dir(path, linters = checklist_linters))
+  lint_this <- ifelse(dir.exists(path), lintr::lint_dir, lintr::lint)
+  lints <- try(lint_this(path, linters = checklist_linters))
   if (length(lints)) print(lints) else "Excellent!! -- lintr found no style problems!"
   message("#---------------------------------------------------------------#")
   try(check_usage(path))
