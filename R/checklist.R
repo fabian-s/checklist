@@ -21,7 +21,7 @@ checklist <- function(path = ".") {
   message("#---------------------------------------------------------------#")
   message("Ok, so far so good. If anything has come up above, please look into it & get it fixed.")
   message("(But: some of the lints and alerts above may also be false positives.")
-  message("Use your judgement...")
+  message("Use your judgement...)")
   message("The easiest way to fix the formatting is to run 'styler::style_dir'.")
   message("#---------------------------------------------------------------#")
   message("Now for some non-automated checks you need to do yourself:")
