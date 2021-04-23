@@ -1,5 +1,5 @@
 #' @import lintr
-nonportable_names_linter <- function(source_file) {
+nonportable_names_linter <- structure(function(source_file) {
   if (is.null(source_file[["file_lines"]])) {
     # abort if source_file is an expression and not entire file
     return(NULL)
@@ -21,12 +21,12 @@ nonportable_names_linter <- function(source_file) {
     linter = "nonportable_names_linter",
     ranges = hit_list
   )
-}
+}, class = "linter", name = "nonportable_names")
 
 #-------------------------------------------------------------------------------
 
 #' @import utils
-undocumented_function_linter <- function(source_file) {
+undocumented_function_linter <- structure(function(source_file) {
   if (is.null(source_file[["file_lines"]])) {
     # abort if source_file is an expression and not entire file
     return(NULL)
@@ -47,7 +47,7 @@ undocumented_function_linter <- function(source_file) {
       ranges = list(c(1, 1))
     )
   })
-}
+}, class = "linter", name = "undocumented_functions")
 
 
 #'@importFrom zoo rollapply
@@ -87,7 +87,7 @@ check_preceding_comment <- function(first_lines, source_file) {
 
 #-------------------------------------------------------------------------------
 
-multiple_dot_args_linter <- function(source_file) {
+multiple_dot_args_linter <- structure(function(source_file) {
   if (!is.null(source_file[["file_lines"]])) {
     # abort if source_file is entire file, not a top level expression.
     return(NULL)
@@ -114,7 +114,7 @@ multiple_dot_args_linter <- function(source_file) {
       linter = "multiple_dots_linter"
     )
   })
-}
+}, class = "linter", name = "multiple_dot_args")
 
 get_dot_call_locs <- function(parsed) {
   # parsed[parsed$line1 %in% c(21, 22),]
@@ -134,8 +134,7 @@ get_dot_call_locs <- function(parsed) {
 
 #-------------------------------------------------------------------------------
 
-cyclocomp_linter <- function(complexity_limit = 25) {
-function(source_file) {
+cyclocomp_linter <- structure(function(source_file) {
   if (!is.null(source_file[["file_lines"]])) {
     # abort if source_file is entire file, not a top level expression.
     return(NULL)
@@ -158,5 +157,5 @@ function(source_file) {
     line = source_file$lines[1],
     linter = "cyclocomp_linter"
   )
-}
-}
+}, class = "linter", name = "cyclocomp")
+
