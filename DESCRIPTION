@@ -1,6 +1,6 @@
 Package: checklist
 Title: Automating OCD Since 2019
-Version: 0.0.0.9000
+Version: 0.0.0.9500
 Authors@R: 
     person(given = "Fabian",
            family = "Scheipl",
