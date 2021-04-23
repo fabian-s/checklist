@@ -10,15 +10,17 @@
 checklist <- function(path = ".") {
   run_checks(path)
   
-  message("Ok, so far so good. If anything has come up above, please look into it & get it fixed.")
-  message("(But some of the lints and alerts above may also be false positives --")
-  message("use your judgement, since you're using this package you must have excellent taste anyway...)")
-  message("The easiest way to fix the formatting is to run 'styler::style_dir' or 'styler::style_file'")
-  message("#---------------------------------------------------------------#")
-  
-  nag_user()
-  
-  message("Ok, please fix everything that came up and then run me again to make sure. Bye!\n")
+  if (interactive()) {
+    message("Ok, so far so good. If anything has come up above, please look into it & get it fixed.")
+    message("(But some of the lints and alerts above may also be false positives --")
+    message("use your judgement, since you're using this package you must have excellent taste anyway...)")
+    message("The easiest way to fix the formatting is to run 'styler::style_dir' or 'styler::style_file'")
+    message("#---------------------------------------------------------------#")
+    
+    nag_user()
+    
+    message("Ok, please fix everything that came up and then run me again to make sure. Bye!\n")
+  }
   invisible(NULL)
 }
 
@@ -30,7 +32,11 @@ run_checks <- function(path) {
   message("Running linters:")
   lint_this <- ifelse(dir.exists(path), lintr::lint_dir, lintr::lint)
   lints <- try(lint_this(path, linters = checklist_linters))
-  if (length(lints)) print(lints) else "Excellent!! -- lintr found no style problems!"
+  if (length(lints)) {
+    print(lints) 
+  } else {
+    message("Excellent! -- lintr found nothing to complain about.")
+  }  
   message("#---------------------------------------------------------------#")
   try(check_usage(path))
   message("#---------------------------------------------------------------#")
