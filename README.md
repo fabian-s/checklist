@@ -5,9 +5,9 @@
 
 Inspired by projects like [`{goodpractice}`](https://github.com/MangoTheCat/goodpractice) and [`{checkers}`](https://github.com/ropenscilabs/checkers), this package implements a semi-automated checklist for scripts and program files.  
 
-Its ostensible primary purpose is to help people in my programming classes write better
+Its ostensible purpose is to help people in my programming classes write better
 code (i.e., come to grips with me being uptight and obsessive-compulsive about spaces and indentation).  
-It's actual primary purpose is to save me from having to write out repetitive nagging comments about sloppy homework.
+Its actual purpose is to save me from having to write out repetitive nagging comments about sloppy homework.
 
 ## Installation
 
